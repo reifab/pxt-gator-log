@@ -11,7 +11,9 @@
         "README.md",
         "gatorlog.ts"
     ],
-    "testFiles": [],
+    "testFiles": [
+        "tests.ts"
+    ],
     "public": true,
     "targetVersions": {
         "target": "4.0.16",

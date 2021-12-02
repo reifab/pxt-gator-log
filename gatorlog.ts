@@ -96,7 +96,7 @@ namespace gatorLog {
     */
     //% weight=59 
     //% blockId="gatorLog_begin_custom" 
-    //% block="initializes gator:log with custom pins"
+    //% block="initializes gator:log with custom pins TX %TX_pin, RX %RX_pin, RST %RST_pin"
     //% RX_pin.defl=SerialPin.P12
     //% TX_pin.defl=SerialPin.P8
     //% RST_pin.defl=DigitalPin.P13
