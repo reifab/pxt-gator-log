@@ -29,7 +29,7 @@ enum HeaderLine {
 
 //% color=#f44242 
 //% icon="\uf0ce"
-//% groups=['init', 'basic' ,'textfile', 'csv']
+//% groups=['init', 'filesystem' ,'textfile', 'csv']
 namespace gatorLog {
     // Functions for reading Particle from the gatorlog in Particle or straight adv value
 
@@ -62,6 +62,24 @@ namespace gatorLog {
         return
     }
 
+    function resetHardware(RST_pin: DigitalPin){
+        pins.digitalWritePin(RST_pin, 1)
+        basic.pause(100)
+        pins.digitalWritePin(RST_pin, 0)
+        basic.pause(100)
+        pins.digitalWritePin(RST_pin, 1)
+    }
+
+    function beginGeneric(TX_pin: SerialPin, RX_pin: SerialPin,  RST_pin: DigitalPin){
+        basic.pause(2500)
+        serial.redirect(TX_pin, RX_pin, BaudRate.BaudRate9600)
+        resetHardware(RST_pin)
+        serial.readUntil(writeReady)
+        basic.pause(20)
+        dummyFile()
+        return
+    }
+
     /**
     * Initializes gator:log and waits until it says it is ready to be written to.
     */
@@ -70,16 +88,36 @@ namespace gatorLog {
     //% block="initialize gator:log"
     //% group="init"
     export function begin() {
-        basic.pause(2500)
-        serial.redirect(SerialPin.P15, SerialPin.P14, BaudRate.BaudRate9600)
-        pins.digitalWritePin(DigitalPin.P13, 1)
-        basic.pause(100)
-        pins.digitalWritePin(DigitalPin.P13, 0)
-        basic.pause(100)
-        pins.digitalWritePin(DigitalPin.P13, 1)
-        serial.readUntil(writeReady)
-        basic.pause(20)
-        dummyFile()
+        beginGeneric(SerialPin.P15, SerialPin.P14, DigitalPin.P13)
+    }
+
+    /**
+    * Initializes gator:log and waits until it says it is ready to be written to.
+    */
+    //% weight=50 
+    //% blockId="gatorLog_begin_custom" 
+    //% block="initializes gator:log with custom pins"
+    //% RX_pin.defl=SerialPin.P12
+    //% TX_pin.defl=SerialPin.P8
+    //% RST_pin.defl=DigitalPin.P13
+    //% group="init"
+    export function beginWithCustomPins(TX_pin: SerialPin, RX_pin: SerialPin, RST_pin: DigitalPin) {
+        beginGeneric(TX_pin,RX_pin,RST_pin)
+        return
+    }
+
+    /**
+    * Initializes date and time
+    */
+    //% weight=50 
+    //% blockId="gatorLog_set_Date" 
+    //% block="sets date and time with year %year, month %month, day %day, hour %hour, minute %minute, seconds %seconds"
+    //% group="csv"
+    export function setDateAndTime(year: number = 2021, month: number = 1, day: number = 1, hour: number = 0, minute: number = 0, seconds: number = 0) {
+        rowCounter = 0
+        timeanddate.TimeFormat.HHMM24hr
+        timeanddate.set24HourTime(hour, minute, seconds)
+        timeanddate.setDate(month, day, year)
         return
     }
 
@@ -106,7 +144,7 @@ namespace gatorLog {
     //% weight=48
     //% blockId="gatorLog_removeItem"
     //% block="remove file %value"
-    //% group="basic"
+    //% group="filesystem"
     export function removeItem(value: string) {
         command()
         serial.writeString("rm " + value + carriageReturn)
@@ -121,7 +159,7 @@ namespace gatorLog {
     //% weight=47
     //% blockId="gatorLog_mkDirectory"
     //% block="create folder with name %value"
-    //% group="basic"
+    //% group="filesystem"
     export function mkDirectory(value: string) {
         command()
         serial.writeString("md " + value + carriageReturn)
@@ -136,7 +174,7 @@ namespace gatorLog {
     //% weight=46
     //% blockId="gatorLog_chDirectory"
     //% block="change to %value | folder"
-    //% group="basic"
+    //% group="filesystem"
     export function chDirectory(value: string) {
         command()
         serial.writeString("cd " + value + carriageReturn)
@@ -151,7 +189,7 @@ namespace gatorLog {
     //% weight=45
     //% blockId="gatorLog_removeDir"
     //% block="remove folder %value | and it's contents"
-    //% group="basic"
+    //% group="filesystem"
     export function removeDir(value: string) {
         command()
         serial.writeString("rm -rf " + value + carriageReturn)
@@ -236,9 +274,9 @@ namespace gatorLog {
             basic.pause(20)
         }
         if (isHeader == HeaderLine.YES) {
-            row.insertAt(0, "Zeilenzähler ab Start");
-            row.insertAt(1, "Datum");
-            row.insertAt(2, "Uhrzeit");
+            row.insertAt(0, "Row nr.");
+            row.insertAt(1, "Date");
+            row.insertAt(2, "Time");
         } else {
             let time
             let date
