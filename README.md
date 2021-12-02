@@ -23,40 +23,19 @@ Connection:
 
 ## Example: Basic Functionality Test
 ```blocks
-input.onButtonPressed(Button.A, function () {
-    basic.showIcon(IconNames.Sword)
-    gatorLog.begin(
-    2021,
-    12,
-    1,
-    14,
-    38,
-    0
-    )
-    gatorLog.mkDirectory("UV-Messung")
-    gatorLog.chDirectory("UV-Messung")
-    gatorLog.openCSVFile("uv-messung")
-    gatorLog.writeRowWithTextToCSV(["UV-Wert"], Header.JA)
-    loggen = true
-    basic.showIcon(IconNames.Yes)
-    basic.clearScreen()
-})
-input.onButtonPressed(Button.B, function () {
-    loggen = false
-    power.lowPowerRequest()
-})
-let loggen = false
-basic.showIcon(IconNames.Heart)
-basic.clearScreen()
-loggen = false
-power.fullPowerOn(FullPowerSource.A)
-power.fullPowerOn(FullPowerSource.B)
-basic.forever(function () {
-    while (loggen) {
-        gatorLog.writeRowWithNumbersToCSV([pins.analogReadPin(AnalogPin.P0)], Header.NEIN)
-        power.lowPowerPause(5000)
-    }
-})
+gatorLog.beginWithCustomPins(SerialPin.P8, SerialPin.P12, DigitalPin.P13)
+gatorLog.mkDirectory("testFolder")
+gatorLog.chDirectory("testFolder")
+gatorLog.openCSVFile("testFile")
+gatorLog.writeRowWithTextToCSV(["Temperature - °C", "Pressure - Pa", "LightIntensity - Lux"], HeaderLine.YES)
+for (let index = 0; index < 1000; index++) {
+    gatorLog.writeRowWithNumbersToCSV([
+    23,
+    900,
+    300
+    ], HeaderLine.NO)
+}
+
 
 ```
 
