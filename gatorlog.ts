@@ -83,7 +83,7 @@ namespace gatorLog {
     /**
     * Initializes gator:log and waits until it says it is ready to be written to.
     */
-    //% weight=50 
+    //% weight=60 
     //% blockId="gatorLog_begin" 
     //% block="initialize gator:log"
     //% group="init"
@@ -94,7 +94,7 @@ namespace gatorLog {
     /**
     * Initializes gator:log and waits until it says it is ready to be written to.
     */
-    //% weight=50 
+    //% weight=59 
     //% blockId="gatorLog_begin_custom" 
     //% block="initializes gator:log with custom pins"
     //% RX_pin.defl=SerialPin.P12
