@@ -8,9 +8,7 @@
     },
     "files": [
         "README.md",
-        "gatorlog.ts",
-        "shims.d.ts",
-        "enums.d.ts"
+        "gatorlog.ts"
     ],
     "testFiles": [],
     "public": true,
