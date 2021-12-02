@@ -4,7 +4,8 @@
     "description": "SparkFun gator:Log data logger and RTC",
     "license": "MIT",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "microbit-pxt-timeanddate": "github:bsiever/microbit-pxt-timeanddate#v2.0.24"
     },
     "files": [
         "README.md",

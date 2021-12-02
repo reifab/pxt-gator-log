@@ -22,8 +22,14 @@ enum ReturnDataType {
     Raw = 3
 }
 
+enum HeaderLine {
+    YES = 1,
+    NO = 0,
+}
+
 //% color=#f44242 
 //% icon="\uf0ce"
+//% groups=['init', 'basic' ,'textfile', 'csv']
 namespace gatorLog {
     // Functions for reading Particle from the gatorlog in Particle or straight adv value
 
@@ -33,6 +39,7 @@ namespace gatorLog {
     let newLine = String.fromCharCode(10)
     let commandReady = ">"
     let writeReady = "<"
+    let rowCounter = 0
 
     //The only reason we have this function is so we don't set currentFile to DELETEME.txt
     function dummyFile() {
@@ -61,6 +68,7 @@ namespace gatorLog {
     //% weight=50 
     //% blockId="gatorLog_begin" 
     //% block="initialize gator:log"
+    //% group="init"
     export function begin() {
         basic.pause(2500)
         serial.redirect(SerialPin.P15, SerialPin.P14, BaudRate.BaudRate9600)
@@ -81,6 +89,7 @@ namespace gatorLog {
     //% weight=49
     //% blockId="gatorLog_openFile"
     //% block="open file named %value"
+    //% group="textfile"
     export function openFile(value: string) {
         command()
         serial.writeString("append " + value + carriageReturn)
@@ -97,6 +106,7 @@ namespace gatorLog {
     //% weight=48
     //% blockId="gatorLog_removeItem"
     //% block="remove file %value"
+    //% group="basic"
     export function removeItem(value: string) {
         command()
         serial.writeString("rm " + value + carriageReturn)
@@ -111,6 +121,7 @@ namespace gatorLog {
     //% weight=47
     //% blockId="gatorLog_mkDirectory"
     //% block="create folder with name %value"
+    //% group="basic"
     export function mkDirectory(value: string) {
         command()
         serial.writeString("md " + value + carriageReturn)
@@ -125,6 +136,7 @@ namespace gatorLog {
     //% weight=46
     //% blockId="gatorLog_chDirectory"
     //% block="change to %value | folder"
+    //% group="basic"
     export function chDirectory(value: string) {
         command()
         serial.writeString("cd " + value + carriageReturn)
@@ -139,6 +151,7 @@ namespace gatorLog {
     //% weight=45
     //% blockId="gatorLog_removeDir"
     //% block="remove folder %value | and it's contents"
+    //% group="basic"
     export function removeDir(value: string) {
         command()
         serial.writeString("rm -rf " + value + carriageReturn)
@@ -153,6 +166,7 @@ namespace gatorLog {
     //% blockId="gatorLog_writeLine"
     //% weight=44
     //% block="write line %value | to current file"
+    //% group="textfile"
     export function writeLine(value: string) {
         if (commandMode == 1) {
             serial.writeString("append " + currentFile + carriageReturn)
@@ -171,6 +185,7 @@ namespace gatorLog {
     //% blockId="gatorLog_writeText"
     //% weight=43
     //% block="write %value | to current file"
+    //% group="textfile"
     export function writeText(value: string) {
         if (commandMode == 1) {
             serial.writeString("append " + currentFile + carriageReturn)
@@ -201,6 +216,82 @@ namespace gatorLog {
         serial.writeString(carriageReturn + newLine)
         serial.readUntil(commandReady)
         basic.pause(20)
+        return
+    }
+
+    function writeRowToCSVTypeAny(values: any[], isHeader: HeaderLine) {
+        let row = []
+
+        for (let element of values) {
+            if (typeof element == 'string') {
+                row.push(element)
+            } else {
+                row.push(convertToText(element));
+            }
+        }
+
+        if (commandMode == 1) {
+            serial.writeString("append " + currentFile + carriageReturn)
+            serial.readUntil(writeReady)
+            basic.pause(20)
+        }
+        if (isHeader == HeaderLine.YES) {
+            row.insertAt(0, "Zeilenzähler ab Start");
+            row.insertAt(1, "Datum");
+            row.insertAt(2, "Uhrzeit");
+        } else {
+            let time
+            let date
+            date = timeanddate.date(timeanddate.DateFormat.YYYY_MM_DD)
+            time = timeanddate.time(timeanddate.TimeFormat.HHMMSS24hr)
+            time = time.replace(".", ":")
+            row.insertAt(0, rowCounter.toString());
+            row.insertAt(1, date);
+            row.insertAt(2, time);
+            rowCounter = rowCounter + 1;
+        }
+        serial.writeString(row.join(";") + carriageReturn + newLine)
+        commandMode = 0
+        basic.pause(20)
+        return
+    }
+
+    /**
+      * Opens a CSV File with the name provided (the extension .csv will be added automatically). If the file does not exist, it is created.
+      */
+    //% weight=49
+    //% blockId="gatorLog_openCSVFile"
+    //% block="open csv file named %value"
+    //% group="csv"
+    export function openCSVFile(value: string) {
+        value = value + ".csv";
+        openFile(value);
+        return;
+    }
+
+    /**
+    * Writes a row to the current open CSV file with the actual date and time. If no file has been opened, this will be recorded to the LOGxxxx.txt folder
+    */
+    //% blockId="gatorLog_writeRowWithTextToCSV"
+    //% weight=42
+    //% block="write one row with columns %values | to current csv file. Is Header %isHeader"
+    //% isHeader.defl=Header.YES
+    //% group="csv"
+    export function writeRowWithTextToCSV(values: string[], isHeader: HeaderLine) {
+        writeRowToCSVTypeAny(values, isHeader);
+        return;
+    }
+
+    /**
+    * Writes a row to the current open CSV file with the actual date and time. If no file has been opened, this will be recorded to the LOGxxxx.txt folder
+    */
+    //% blockId="gatorLog_writeRowWithNumbersToCSV"
+    //% weight=41
+    //% block="write one row with columns %values | to current csv file. Is Header %isHeader"
+    //% isHeader.defl=Header.NO
+    //% group="csv"
+    export function writeRowWithNumbersToCSV(values: number[], isHeader: HeaderLine) {
+        writeRowToCSVTypeAny(values, isHeader);
         return
     }
 }
