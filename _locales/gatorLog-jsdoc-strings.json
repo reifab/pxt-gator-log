@@ -1,0 +1,17 @@
+{
+  "ReturnDataType": "Andy England @ SparkFun Electronics\r\nSeptember 6, 2018\r\nDevelopment environment specifics:\r\nWritten in Microsoft Makecode\r\nTested with a SparkFun gatorlog sensor and micro:bit\r\n* This code is released under the [MIT License](http://opensource.org/licenses/MIT).\r\nPlease review the LICENSE.md file included with this example. If you have any questions\r\nor concerns with licensing, please contact techsupport@sparkfun.com.\r\nDistributed as-is; no warranty is given.\r\n\r\nFunctions to operate the gatorlog sensor",
+  "gatorLog.begin": "Initializes gator:log and waits until it says it is ready to be written to.",
+  "gatorLog.beginWithCustomPins": "Initializes gator:log and waits until it says it is ready to be written to.",
+  "gatorLog.chDirectory": "Opens a folder. Note that the folder must already exist on your SD card. To go back to the root/home folder, use \"Change to '..' folder\"",
+  "gatorLog.mkDirectory": "Creates a folder. Note that this block does not open the folder that it creates",
+  "gatorLog.openCSVFile": "Opens a CSV File with the name provided (the extension .csv will be added automatically). If the file does not exist, it is created.",
+  "gatorLog.openFile": "Opens the file with the name provided (don't forget to provide an extension). If the file does not exist, it is created.",
+  "gatorLog.removeDir": "Removes a folder",
+  "gatorLog.removeItem": "Removes the file with the provided name",
+  "gatorLog.setDateAndTime": "Initializes date and time",
+  "gatorLog.writeLine": "Writes a line of text to the current open file. If no file has been opened, this will be recorded to the LOGxxxx.txt folder",
+  "gatorLog.writeLineOffset": "Writes text to the current open file at the position specified. If no file has been opened, this will be recorded to the LOGxxxx.txt folder",
+  "gatorLog.writeRowWithNumbersToCSV": "Writes a row to the current open CSV file with the actual date and time. If no file has been opened, this will be recorded to the LOGxxxx.txt folder",
+  "gatorLog.writeRowWithTextToCSV": "Writes a row to the current open CSV file with the actual date and time. If no file has been opened, this will be recorded to the LOGxxxx.txt folder",
+  "gatorLog.writeText": "Writes text to the current open file. If no file has been opened, this will be recorded to the LOGxxxx.txt folder"
+}

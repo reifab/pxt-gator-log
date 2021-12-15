@@ -9,7 +9,9 @@
     },
     "files": [
         "README.md",
-        "gatorlog.ts"
+        "gatorlog.ts",
+        "_locales/de/gatorLog-jsdoc-strings.json",
+        "_locales/de/gatorLog-strings.json"
     ],
     "testFiles": [
         "tests.ts"

@@ -1,0 +1,22 @@
+{
+  "gatorLog.beginWithCustomPins|block": "initialisiert den Logger mit den Pins TX %TX_pin, RX %RX_pin, RST %RST_pin",
+  "gatorLog.begin|block": "initialisiert den Loggger",
+  "gatorLog.chDirectory|block": "wechsle zu %value | Ordner",
+  "gatorLog.mkDirectory|block": "erstelle Ordner mit Name %value",
+  "gatorLog.openCSVFile|block": "Öffne CSV- Datei mit Name %value",
+  "gatorLog.openFile|block": "Öffne Datei mit Name %value",
+  "gatorLog.removeDir|block": "Entferne Ordner mit Name %value | sammt Inhalt",
+  "gatorLog.removeItem|block": "entferne Datei %value",
+  "gatorLog.setDateAndTime|block": "setze Datum und Uhrzeit auf Jahr %year, Monat %month, Tag %day, Stunde %hour, Minute %minute",
+  "gatorLog.writeLineOffset|block": "Schreibe Zeile %value | an Position %offset",
+  "gatorLog.writeLine|block": "Schreibe Zeile %value | in aktuelles File",
+  "gatorLog.writeRowWithNumbersToCSV|block": "Schreibe eine Zeile mit Spalten %values | in aktuelles csv- File. Ist Kopfzeile %isHeader",
+  "gatorLog.writeRowWithTextToCSV|block": "Schreibe eine Zeile mit Spalten %values | in aktuelles csv- File. Ist Kopfzeile %isHeader",
+  "gatorLog.writeText|block": "schreibe %value | in aktuelles Textfile",
+  "gatorLog|block": "SD-Logger",
+  "{id:category}GatorLog": "SD-Logger",
+  "{id:group}csv": "CSV-File",
+  "{id:group}filesystem": "Dateisystem",
+  "{id:group}init": "Initialisierung",
+  "{id:group}textfile": "Textfile"
+}
