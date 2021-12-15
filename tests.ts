@@ -1,5 +1,5 @@
 gatorLog.beginWithCustomPins(SerialPin.P8, SerialPin.P12, DigitalPin.P13)
-gatorLog.setDateAndTime(2021,12,2,14,34,1)
+gatorLog.setDateAndTime(2021,12,2,14,34)
 gatorLog.mkDirectory("testFolder")
 gatorLog.chDirectory("testFolder")
 gatorLog.openCSVFile("testFile")

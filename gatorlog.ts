@@ -111,12 +111,12 @@ namespace gatorLog {
     */
     //% weight=50 
     //% blockId="gatorLog_set_Date" 
-    //% block="sets date and time with year %year, month %month, day %day, hour %hour, minute %minute, seconds %seconds"
+    //% block="sets date and time with year %year, month %month, day %day, hour %hour, minute %minute"
     //% group="csv"
-    export function setDateAndTime(year: number = 2021, month: number = 1, day: number = 1, hour: number = 0, minute: number = 0, seconds: number = 0) {
+    export function setDateAndTime(year: number = 2021, month: number = 1, day: number = 1, hour: number = 0, minute: number = 0) {
         rowCounter = 0
         timeanddate.TimeFormat.HHMM24hr
-        timeanddate.set24HourTime(hour, minute, seconds)
+        timeanddate.set24HourTime(hour, minute, 0)
         timeanddate.setDate(month, day, year)
         return
     }
