@@ -313,7 +313,7 @@ namespace gatorLog {
     //% blockId="gatorLog_writeRowWithTextToCSV"
     //% weight=42
     //% block="write one row with columns %values | to current csv file. Is Header %isHeader"
-    //% isHeader.defl=Header.YES
+    //% isHeader.defl=HeaderLine.YES
     //% group="csv"
     export function writeRowWithTextToCSV(values: string[], isHeader: HeaderLine) {
         writeRowToCSVTypeAny(values, isHeader);
@@ -326,7 +326,7 @@ namespace gatorLog {
     //% blockId="gatorLog_writeRowWithNumbersToCSV"
     //% weight=41
     //% block="write one row with columns %values | to current csv file. Is Header %isHeader"
-    //% isHeader.defl=Header.NO
+    //% isHeader.defl=HeaderLine.NO
     //% group="csv"
     export function writeRowWithNumbersToCSV(values: number[], isHeader: HeaderLine) {
         writeRowToCSVTypeAny(values, isHeader);
