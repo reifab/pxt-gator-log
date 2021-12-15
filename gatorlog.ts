@@ -83,10 +83,11 @@ namespace gatorLog {
     /**
     * Initializes gator:log and waits until it says it is ready to be written to.
     */
-    //% weight=60 
+    //% weight=68 
     //% blockId="gatorLog_begin" 
     //% block="initialize gator:log"
     //% group="init"
+    //% advanced=true
     export function begin() {
         beginGeneric(SerialPin.P15, SerialPin.P14, DigitalPin.P13)
     }
@@ -94,7 +95,7 @@ namespace gatorLog {
     /**
     * Initializes gator:log and waits until it says it is ready to be written to.
     */
-    //% weight=59 
+    //% weight=69
     //% blockId="gatorLog_begin_custom" 
     //% block="initializes gator:log with custom pins TX %TX_pin, RX %RX_pin, RST %RST_pin"
     //% RX_pin.defl=SerialPin.P12
@@ -109,7 +110,7 @@ namespace gatorLog {
     /**
     * Initializes date and time
     */
-    //% weight=50 
+    //% weight=59 
     //% blockId="gatorLog_set_Date" 
     //% block="sets date and time with year %year, month %month, day %day, hour %hour, minute %minute"
     //% group="csv"
@@ -124,7 +125,7 @@ namespace gatorLog {
     /**
     * Opens the file with the name provided (don't forget to provide an extension). If the file does not exist, it is created.
     */
-    //% weight=49
+    //% weight=58
     //% blockId="gatorLog_openFile"
     //% block="open file named %value"
     //% group="textfile"
@@ -141,7 +142,7 @@ namespace gatorLog {
     /**
     * Removes the file with the provided name
     */
-    //% weight=48
+    //% weight=47
     //% blockId="gatorLog_removeItem"
     //% block="remove file %value"
     //% group="filesystem"
@@ -156,7 +157,7 @@ namespace gatorLog {
     /**
     * Creates a folder. Note that this block does not open the folder that it creates
     */
-    //% weight=47
+    //% weight=49
     //% blockId="gatorLog_mkDirectory"
     //% block="create folder with name %value"
     //% group="filesystem"
@@ -171,7 +172,7 @@ namespace gatorLog {
     /**
     * Opens a folder. Note that the folder must already exist on your SD card. To go back to the root/home folder, use "Change to '..' folder"
     */
-    //% weight=46
+    //% weight=48
     //% blockId="gatorLog_chDirectory"
     //% block="change to %value | folder"
     //% group="filesystem"
@@ -242,6 +243,7 @@ namespace gatorLog {
     //% weight=42
     //% blockId="gatorLog_writeLineOffset"
     //% block="write line %value | at position %offset"
+    //% group="textfile"
     //% advanced=true
     export function writeLineOffset(value: string, offset: number) {
         command()
@@ -311,7 +313,7 @@ namespace gatorLog {
     * Writes a row to the current open CSV file with the actual date and time. If no file has been opened, this will be recorded to the LOGxxxx.txt folder
     */
     //% blockId="gatorLog_writeRowWithTextToCSV"
-    //% weight=42
+    //% weight=48
     //% block="write one row with columns %values | to current csv file. Is Header %isHeader"
     //% isHeader.defl=HeaderLine.YES
     //% group="csv"
@@ -324,7 +326,7 @@ namespace gatorLog {
     * Writes a row to the current open CSV file with the actual date and time. If no file has been opened, this will be recorded to the LOGxxxx.txt folder
     */
     //% blockId="gatorLog_writeRowWithNumbersToCSV"
-    //% weight=41
+    //% weight=47
     //% block="write one row with columns %values | to current csv file. Is Header %isHeader"
     //% isHeader.defl=HeaderLine.NO
     //% group="csv"
