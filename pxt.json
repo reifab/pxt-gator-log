@@ -4,15 +4,18 @@
     "description": "SparkFun gator:Log data logger and RTC",
     "license": "MIT",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "microbit-pxt-timeanddate": "github:bsiever/microbit-pxt-timeanddate#v2.0.24"
     },
     "files": [
         "README.md",
         "gatorlog.ts",
-        "shims.d.ts",
-        "enums.d.ts"
+        "_locales/de/gatorLog-jsdoc-strings.json",
+        "_locales/de/gatorLog-strings.json"
     ],
-    "testFiles": [],
+    "testFiles": [
+        "tests.ts"
+    ],
     "public": true,
     "targetVersions": {
         "target": "4.0.16",
@@ -20,5 +23,6 @@
     },
     "supportedTargets": [
         "microbit"
-    ]
+    ],
+    "preferredEditor": "tsprj"
 }

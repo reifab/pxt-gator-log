@@ -1,0 +1,17 @@
+{
+  "ReturnDataType": "Forked from Andy England @ SparkFun Electronics, September 6, 2018\r\nModified for purposes of Smartfeld @ GBSSG, reifab, 2021\r\nDevelopment environment specifics:\r\nWritten in Microsoft Makecode\r\nTested with a SparkFun gatorlog sensor and micro:bit\r\n* This code is released under the [MIT License](http://opensource.org/licenses/MIT).\r\nPlease review the LICENSE.md file included with this example.\r\nDistributed as-is; no warranty is given.\r\n\r\nFunctions to operate the gatorlog sensor",
+  "gatorLog.begin": "Initialisiert den Logger und wartet bis es bereit zum schreiben ist. Der Startpunkt der Messung kann festgelegt werden.",
+  "gatorLog.beginWithCustomPins": "Inizialisiert den gator:log und wartet, bis dieser bereit ist. Die Standard- Pinbelegung kann geändert werden.",
+  "gatorLog.chDirectory": "Öffnet einen Ordner. Der Ordner muss auf der SD Karte bereits existieren. Um zurück zum root/home Ordner zu kommen, benutze \"Change to '..' folder\"",
+  "gatorLog.mkDirectory": "Erstellt einen Ordner. Beachte dass der erstellte Ordner nicht automatisch geöffnet wird.",
+  "gatorLog.openCSVFile": "Öffnet eine CSV angegebenem Namen (Dateiendung .CSV wird automatisch angefügt.). Wenn das File nicht existiert, wird es automatisch erstellt.",
+  "gatorLog.openFile": "Öffnet die Datei mit angegebenem Namen (vergessen Sie die Dateiendung nicht, z.B. .txt). Wenn das File nicht existiert, wird es automatisch erstellt.",
+  "gatorLog.removeDir": "Entfernt einen Ordner.",
+  "gatorLog.removeItem": "Entfernt eine Datei mit angegebenem Namen.",
+  "gatorLog.setDateAndTime": "Initializes date and time",
+  "gatorLog.writeLine":  "Schreibt eine Zeile in die geöffnete Datei. Wenn keine Datei geöffnet ist, wird die Zeile in den LOGxxxx.txt Ordner geschrieben.",
+  "gatorLog.writeLineOffset": "Schreibt Text in die geöffnete Datei an angegebener Zeile. Wenn keine Datei geöffnet ist, wird die Zeile in den LOGxxxx.txt Ordner geschrieben.",
+  "gatorLog.writeRowWithNumbersToCSV":  "Schreibt Zeile mit Zahlen in die geöffnete CSV Datei. Wenn keine Datei geöffnet ist, wird die Zeile in den LOGxxxx.txt Ordner geschrieben.",
+  "gatorLog.writeRowWithTextToCSV": "Schreibt Zeile mit Text in die geöffnete CSV Datei. Wenn keine Datei geöffnet ist, wird die Zeile in den LOGxxxx.txt Ordner geschrieben.",
+  "gatorLog.writeText": "Schreibt Text in die geöffnete Datei. Wenn keine Datei geöffnet ist, wird die Zeile in den LOGxxxx.txt Ordner geschrieben."
+}

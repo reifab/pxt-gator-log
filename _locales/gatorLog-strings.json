@@ -1,0 +1,22 @@
+{
+  "gatorLog.beginWithCustomPins|block": "initializes gator:log with custom pins TX %TX_pin, RX %RX_pin, RST %RST_pin",
+  "gatorLog.begin|block": "initialize gator:log",
+  "gatorLog.chDirectory|block": "change to %value | folder",
+  "gatorLog.mkDirectory|block": "create folder with name %value",
+  "gatorLog.openCSVFile|block": "open csv file named %value",
+  "gatorLog.openFile|block": "open file named %value",
+  "gatorLog.removeDir|block": "remove folder %value | and it's contents",
+  "gatorLog.removeItem|block": "remove file %value",
+  "gatorLog.setDateAndTime|block": "sets date and time with year %year, month %month, day %day, hour %hour, minute %minute",
+  "gatorLog.writeLineOffset|block": "write line %value | at position %offset",
+  "gatorLog.writeLine|block": "write line %value | to current file",
+  "gatorLog.writeRowWithNumbersToCSV|block": "write one row with columns %values | to current csv file. Is Header %isHeader",
+  "gatorLog.writeRowWithTextToCSV|block": "write one row with columns %values | to current csv file. Is Header %isHeader",
+  "gatorLog.writeText|block": "write %value | to current file",
+  "gatorLog|block": "gatorLog",
+  "{id:category}GatorLog": "GatorLog",
+  "{id:group}csv": "csv",
+  "{id:group}filesystem": "filesystem",
+  "{id:group}init": "init",
+  "{id:group}textfile": "textfile"
+}
